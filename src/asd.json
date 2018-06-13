@@ -1,0 +1,24 @@
+{
+  "match": {
+    "path": "/issues/:id",
+    "url": "/issues/s",
+    "isExact": true,
+    "params": {
+      "id": "s"
+    }
+  },
+  "location": {
+    "pathname": "/issues/s",
+    "search": "",
+    "hash": ""
+  },
+  "history": {
+    "length": 5,
+    "action": "POP",
+    "location": {
+      "pathname": "/issues/s",
+      "search": "",
+      "hash": ""
+    }
+  }
+}
