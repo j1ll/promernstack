@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+curl -s -X PUT http://localhost:3000/api/issues/5b1d5c25e462436ff3ab0460 \
+--header 'Content-Type: application/json' \
+--data '{"title": "Error in console", "status": "Open", "effort":6,"owner":"jill","created":"2016-08-15T00:00:00.000Z"}'

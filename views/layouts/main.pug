@@ -1,0 +1,21 @@
+block data
+  - var pageTitle = "Page title.";
+
+doctype html
+html
+  head
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    meta(charset="UTF-8")
+    title= pageTitle
+    link(rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet' type="text/css" href='table.css')
+  body
+    block content
+      header
+        block header
+          h1=pageTitle
+      main.container
+        block body
+          h2 AAAAA
+      footer
+        block footer

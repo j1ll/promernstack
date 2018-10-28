@@ -1,0 +1,1 @@
+window.__INITIAL_STATE__ = JSON.stringify(initialState);

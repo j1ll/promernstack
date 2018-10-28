@@ -17,6 +17,19 @@ const issueFieldType = {
   title: 'required',
 };
 
+function cleanupIssue(issue) {
+  const cleanedUpIssue = {};
+  Object.keys(issue).forEach(field => {
+    if (issueFieldType[field]) cleanedUpIssue[field] = issue[field];
+  });
+  return cleanedUpIssue;
+}
+
+function convertIssue(issue) {
+  if (issue.created) issue.created = new Date(issue.created);
+  if (issue.completionDate) issue.completionDate = new Date(issue.completionDate);
+  return cleanupIssue(issue);
+}
 function validateIssue(issue) {
   for (const field in issueFieldType) {
     const type = issueFieldType[field];
@@ -32,4 +45,8 @@ function validateIssue(issue) {
   
   return null;
 }
-module.exports = validateIssue;
+module.exports = {
+  validateIssue,
+  cleanupIssue,
+  convertIssue,
+};

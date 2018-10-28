@@ -1,4 +1,5 @@
 const React = require('react');
+import {Form, FormControl, Button} from 'react-bootstrap';
 class IssueAdd extends React.Component {
   handleSubmit = (e) => {
     e.preventDefault();
@@ -15,11 +16,11 @@ class IssueAdd extends React.Component {
   render() {
     return (
       <div>
-        <form name="issueAdd" onSubmit={this.handleSubmit}>
-          <input type="text" name="owner" placeholder="Owner" />
-          <input type="text" name="title" placeholder="Title" />
-          <button>Add</button>
-        </form>
+        <Form inline name="issueAdd" onSubmit={this.handleSubmit}>
+          <FormControl name="owner" placeholder="Owner"/>{' '}
+          <FormControl name="title" placeholder="Title"/>{' '}
+          <Button type="submit" bsStyle="primary">Add</Button>
+        </Form>
       </div>
     )
   }

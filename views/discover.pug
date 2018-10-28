@@ -1,0 +1,12 @@
+extends layouts/main
+
+block data
+  - var pageTitle = `Discover Whinepad Components`;
+
+block content
+  div#app!= body
+  script window.__INITIAL_STATE__ = !{initialState};
+  script(src="/discover.bundle.js")
+
+
+

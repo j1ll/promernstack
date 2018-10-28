@@ -5,16 +5,19 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
+  target: "node",
   mode: "development",
-  entry: {
-    // app:  ["./src/App.jsx"],
-    app:  ["./client/Client.jsx"],
-  },
+  entry: "./server/server.js",
   output: {
-    path: __dirname + "/static/",
+    path: __dirname + "/dist/",
     // publicPath: "build/",
-    filename: "bundle.js"
+    filename: "server.bundle.js",
+    libraryTarget: "commonjs"
   },
+  resolve: {
+    extensions: ['.js','.jsx']
+  },
+  externals: [/^[a-z]/],
   devtool: "source-map",
   module: {
     rules: [
@@ -24,7 +27,7 @@ module.exports = {
         use: {
           loader: "babel-loader",
           options: {
-            presets:["babel-preset-env", "babel-preset-react"],
+            presets:["babel-preset-env"],
             plugins: ["transform-class-properties"]
           }
         }
@@ -48,18 +51,11 @@ module.exports = {
           {loader: "less-loader"},
         ]
       },
-      /*{
-        test: /\.less$/,
-        exclude: [/node_modules/, /public/],
-        use:[
-          "style-loader", "css-loader", "autoprefixer-loader", "less-loader"
-        ]
-      },*/
+
       {
         test: /\.jsx$/,
         exclude: [/node_modules/, /public/],
         use: [
-          // "react-hot-loader/webpack",
           {
             loader: "babel-loader",
             options:{
@@ -69,21 +65,17 @@ module.exports = {
           }
         ]
       },
-      /*
-          {
-            test: /\.json$/,
-            use: ["json-loader"],
-          },*/
+      
     ]
   },
-  devServer: {
+  /*devServer: {
     port:8090,
     contentBase: path.join(__dirname,'static'),
-    // proxy: {'/api/*': 'http://localhost:3000'},
+    // proxy: {'/api/!*': 'http://localhost:3000'},
     proxy: {'**': 'http://localhost:3000'},
     historyApiFallback: true
   },
-  
+  */
     plugins: [
       /*new HtmlWebPackPlugin({
         template: './src/index.html',
